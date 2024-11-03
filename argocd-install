@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+# argo-cd installer script
+# Author: Yahaya Azeez Adebayo
+# Date: 2/11/2024
+# Usage: bash argocd-install
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
