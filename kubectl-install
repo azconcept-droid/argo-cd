@@ -24,4 +24,7 @@ kubectl version --client
 echo "detailed view of version"
 kubectl version --client --output=yaml
 
+echo "clean up ..."
+rm kubectl kubectl.sha256
+
 echo "Happy hacking 😄"
