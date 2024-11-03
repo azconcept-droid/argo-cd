@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+# kubectl installer script
+# Author: Yahaya Azeez Adebayo
+# Date: 2/11/2024
+# Usage: bash kubectl-install
+
+echo "Download the latest release of kubectl"
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+echo "########## validate the binary ################"
+echo "1. Download the kubectl checksum file"
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+
+echo "2. validate the kubectl binary against the checksum file"
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+
+echo "############# install kubectl ############"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+echo "Test to ensure the version of kubectl is up-todate"
+kubectl version --client
+
+echo "detailed view of version"
+kubectl version --client --output=yaml
+
+echo "Happy hacking 😄"
