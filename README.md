@@ -7,6 +7,8 @@ Argo CD is implemented as a Kubernetes controller which continuously monitors ru
 
 2. [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
 
+3. [argo cd getting started](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+
 ## Useful commands to access argocd UI
 - kubectl get ns
 - kubectl -n argocd get all
@@ -16,3 +18,10 @@ Argo CD is implemented as a Kubernetes controller which continuously monitors ru
 - k get secret -n argocd
 - k -n argocd get secrets argocd-initial-admin-secret -o json
 - k -n argocd get secrets argocd-initial-admin-secret -o json | jq .data.password -r | base64 -d # decode the password
+
+## Argo cd cli install
+- wget https://github.com/argoproj/argo-cd/releases/download/v2.12.6/argocd-linux-amd64
+- mv argocd-linux-amd64 argocd
+- sudo mv  argocd /usr/local/bin/
+- argocd
+- argocd login argocd-server-ip:port # input username and password
